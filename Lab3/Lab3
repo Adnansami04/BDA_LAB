@@ -3,16 +3,16 @@ mongo
 use student
 show dbs;
 db.createCollection("students");
-> db.student.insert({_id:1,Name:"Aishwarya",USN:"1BM19CS008",Sem:6,Dept:'CSE',CGPA:9,hobbies:["Skate","Swim"]});
-> db.student.insert({_id:2,Name:"Amit",USN:"1BM19CS015",Sem:6,Dept:'CSE',CGPA:9.1,hobbies:["Code","Swim"]});
+> db.student.insert({_id:1,Name:"Adnansami",USN:"1BM20CS400",Sem:6,Dept:'CSE',CGPA:8,hobbies:["Travel","Code"]});
+> db.student.insert({_id:2,Name:"Dayanand",USN:"1BM19CS000",Sem:6,Dept:'CSE',CGPA:8.6,hobbies:["Code","Read"]});
 
-> db.student.insert({_id:3,Name:"Anisha",USN:"1BM19CS018",Sem:6,Dept:'CSE',CGPA:10,hobbies:["Dance","Sing"]});
+> db.student.insert({_id:3,Name:"Afan",USN:"1BM19CS401",Sem:6,Dept:'CSE',CGPA:8.5,hobbies:["Travel","Read"]});
 
-> db.student.insert({_id:4,Name:"Vidhya",USN:"1BM19CS200",Sem:4,Dept:'CSE',CGPA:9.8,hobbies:["Dance","Sing"]});
+> db.student.insert({_id:4,Name:"Amir",USN:"1BM19CS402",Sem:4,Dept:'CSE',CGPA:9.5,hobbies:["Sing","Gaming"]});
 
 
 > db.student.update({_id:4},{$set:{USN:"1BM20CS200"});
-db.student.aggregate({$match:{dept_name:"cse"}},{$group:{_id:"$semester",avg_cgpa:{$avg:"$cgpa"}}},{$match:{avg_cgpa:{$gt:7.5}}})
+db.student.aggregate({$match:{dept_name:"cse"}},{$group:{_id:"$semester",avg_cgpa:{$avg:"$cgpa"}}},{$match:{avg_cgpa:{$gt:8.5}}})
 
 // export to csv
 mongoexport --host localhost --db student --collection student --type=csv --out  output.csv --fields "USN","semester","Name","dept_name
